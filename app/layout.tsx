@@ -1,6 +1,7 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
+import { GoogleAnalytics } from "@/components/google-analytics"
 
 export const metadata: Metadata = {
   title: "太郎坊チャレンジ｜ふるさと納税で参加権をゲット",
@@ -31,7 +32,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ja">
-      <body>{children}</body>
+      <body>
+        {children}
+        {process.env.NEXT_PUBLIC_GA_ID && (
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID} />
+        )}
+      </body>
     </html>
   )
 }
